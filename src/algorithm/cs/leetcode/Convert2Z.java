@@ -27,7 +27,7 @@ import java.util.List;
  */
 public class Convert2Z {
     String result = "";
-    public String convert(String s, int numRows) {
+    protected String convert(String s, int numRows) {
         if (numRows == 1) {
             return s;
         }
