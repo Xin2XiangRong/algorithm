@@ -110,7 +110,7 @@ public class SynchronizedTest {
         return result;
     }
     @Test
-    public void test001() {
+    public void test42() {
         int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
         System.out.println(maxSubArray(nums));
     }
@@ -1723,9 +1723,24 @@ public class SynchronizedTest {
 
     }
 
-    @Test
-    public void test9999() {
-
-
+    public int cuttingRope(int n) {
+        if(n<=3) return n-1;
+        //记录长度为n的截后的最大值
+        int[] res = new int[n+1];
+        res[1] = 1;
+        res[2] = 2;
+        res[3] = 3;
+        //截出的段数越多，最后的乘积越大，最后一截肯定是2或3，因为4可以拆成2*2，而5没有2*3大
+        for (int i=4;i<=n;i++) {
+            res[i] = Math.max(2 * res[i-2], 3 * res[i-3]);
+        }
+        return res[n];
     }
+    @Test
+    public void test14_1() {
+        System.out.println(cuttingRope(10));
+    }
+
+
+
 }
